@@ -2,11 +2,13 @@ package cl.com.users.api.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface UserRepository extends JpaRepository<AppUser, Integer> {
+import cl.com.users.api.model.User;
 
-    boolean existsByEmail(String email);
+public interface UserRepository extends JpaRepository<User, Integer> {
 
-    AppUser findByEmail(String email);
+  boolean existsByEmail(String email);
+
+  User findByEmail(String email);
 
 
 }

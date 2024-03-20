@@ -4,7 +4,10 @@ import cl.com.users.api.services.impl.AuthServiceImpl;
 import io.swagger.annotations.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
+
+import javax.servlet.http.HttpServletRequest;
 
 @RestController
 @RequestMapping("/api/auth")
@@ -24,6 +27,12 @@ public class AuthController {
           @ApiParam("email") @RequestParam String email,
           @ApiParam("Password") @RequestParam String password) {
     return authService.login(email, password);
+  }
+
+  @GetMapping("/refresh")
+  @PreAuthorize("hasRole('ROLE_ADMIN') or hasRole('ROLE_USER')")
+  public String refreshToken(HttpServletRequest req) {
+    return authService.refreshToken(req.getRemoteUser());
   }
 
 

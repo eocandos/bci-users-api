@@ -14,6 +14,7 @@ import org.springframework.stereotype.Service;
 import cl.com.users.api.model.User;
 import cl.com.users.api.security.JwtTokenProvider;
 
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -22,18 +23,17 @@ public class UserServiceImpl implements UserService {
 
   @Autowired
   private final UserRepository userRepository;
-
   private final PasswordEncoder passwordEncoder;
   private final JwtTokenProvider jwtTokenProvider;
   private final AuthenticationManager authenticationManager;
 
   @Override
-  public User register(User user) {
-    if (!userRepository.existsByEmail(user.getEmail())) {
-      user.setActive(true);
-      user.setPassword(passwordEncoder.encode(user.getPassword()));
-      user.setToken(jwtTokenProvider.createToken(user.getEmail(), user.getAppUserRoles()));
-      return userRepository.save(user);
+  public User register(User appUser) {
+    if (!userRepository.existsByEmail(appUser.getEmail())) {
+      appUser.setActive(true);
+      appUser.setPassword(passwordEncoder.encode(appUser.getPassword()));
+      appUser.setToken(jwtTokenProvider.createToken(appUser.getEmail(), appUser.getAppUserRoles()));
+      return userRepository.save(appUser);
     } else {
       throw new CustomException(ErrorMessages.ERROR_EMAIL_ALREADY_EXIST, HttpStatus.FORBIDDEN);
     }
@@ -44,5 +44,16 @@ public class UserServiceImpl implements UserService {
     return userRepository.findAll();
   }
 
+  @Override
+  public String refreshToken(String email) {
+    return jwtTokenProvider.createToken(email, userRepository.findByEmail(email).getAppUserRoles());
+  }
+  @Override
+  public void updateStatusUser(String email, String token) {
+    User oldUser = userRepository.findByEmail(email);
+    oldUser.setToken(token);
+    oldUser.setLastLogin(new Date());
+    userRepository.save(oldUser);
+  }
 
 }

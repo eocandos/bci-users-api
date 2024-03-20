@@ -1,7 +1,11 @@
 package cl.com.users.api.dto;
 
-import cl.com.users.api.model.Phone;
+import java.util.Date;
+import java.util.List;
+import java.util.UUID;
+
 import cl.com.users.api.model.UserRole;
+import cl.com.users.api.model.Phone;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -13,9 +17,6 @@ import org.hibernate.annotations.UpdateTimestamp;
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Pattern;
-import java.util.Date;
-import java.util.List;
-import java.util.UUID;
 
 @Data
 @NoArgsConstructor

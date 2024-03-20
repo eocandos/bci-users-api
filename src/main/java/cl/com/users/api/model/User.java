@@ -12,6 +12,8 @@ import java.util.List;
 import java.util.UUID;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Pattern;
 
 @Entity
 @Data
@@ -28,13 +30,15 @@ public class User {
   private UUID userId;
 
   @NaturalId
+  @NotEmpty
+  @Pattern(regexp = "^[a-zA-Z0-9_!#$%&amp;'*+/=?`{|}~^.-]+@[a-zA-Z0-9.-]+$")
   private String email;
 
+  @NotEmpty
   private String password;
 
   private String token;
 
-  // @NotEmpty
   private String name;
 
   @OneToMany(cascade = CascadeType.ALL)
@@ -50,5 +54,8 @@ public class User {
 
   @UpdateTimestamp
   private Date modified;
+
+  @CreationTimestamp
+  private Date lastLogin;
 
 }

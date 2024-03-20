@@ -26,12 +26,12 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     http.csrf().disable();
     http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
+
     http.authorizeRequests()//
-        .antMatchers("/users/login").permitAll()//
-        .antMatchers("/users/register").permitAll()//
+        .antMatchers("/api/auth/login").permitAll()//
+        .antMatchers("/api/users").permitAll()//
         .antMatchers("/h2-console/**/**").permitAll()
         .anyRequest().authenticated();
-
     http.exceptionHandling().accessDeniedPage("/login");
     http.apply(new JwtTokenFilterConfigurer(jwtTokenProvider));
   }
@@ -39,12 +39,12 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
   @Override
   public void configure(WebSecurity web) throws Exception {
     web.ignoring().antMatchers("/configuration/**")
-        .antMatchers("/webjars/**")
-        .antMatchers("/public")
+            .antMatchers("/webjars/**")
+            .antMatchers("/public")
 
-        .and()
-        .ignoring()
-        .antMatchers("/h2-console/**/**");;
+            .and()
+            .ignoring()
+            .antMatchers("/h2-console/**/**");;
   }
 
   @Bean
