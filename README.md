@@ -53,13 +53,20 @@ http://localhost:8080/swagger-ui.html#/
 ```
 
 ### Registro Nuevo Usuario
-![new-user-ok](https://github.com/bezkoder/spring-boot-spring-security-jwt-authentication/assets/5439093/0ef16f59-17ca-43b9-a50a-f60c69c05a45)
+#### Se crea con los datos: correo, contraseña, nombre, telefonos y rol
+![new-user](https://github.com/eocandos/bci-users-api/assets/5439093/998b04f7-b1f5-454c-93b2-9f3bc8dda2d5)
 
 ### Intento acceso No Autorizado
+#### Usuario que no está registrado
 ![unauthorized](https://github.com/bezkoder/spring-boot-spring-security-jwt-authentication/assets/5439093/ac2129dc-327e-4454-bef8-84699edb0f18)
 
 ### Acceso Exitoso
-![login-ok-token](https://github.com/bezkoder/spring-boot-spring-security-jwt-authentication/assets/5439093/4c2a7634-7bd8-43f8-978d-89694d15e264)
+#### Se ingresa correo y contraseña registrados previamente
+![login-successfull](https://github.com/eocandos/bci-users-api/assets/5439093/6bfc9dab-f331-494d-92a5-7a0683d72456)
+
+### Obtener todos los usuarios registrados 
+#### Usuario registrado, se usa token generado para poder consultar la lista de usuarios almacenados
+![get-all-users](https://github.com/eocandos/bci-users-api/assets/5439093/3eb1f579-c0cf-4050-98c1-9542f3d0c773)
 
 ### Acceso a la Base de Datos H2 
 #### (Credenciales en archivo application.yml)
