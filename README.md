@@ -1,9 +1,8 @@
 # API Gestion de Usuarios
 
-API creada con Java / Maven / Spring Boot
-
-## Diagrama General
-![diagrama-secuencia-users-api](https://github.com/eocandos/bci-users-api/assets/5439093/817d1086-f343-4ccb-8afc-ae6bb1e4565a)
+API creada con Java / Maven / Spring Boot / JPA / H2
+## Diagrama de Secuencia
+![diagrama-secuencia](https://github.com/bezkoder/spring-boot-spring-security-jwt-authentication/assets/5439093/1455d06e-80bb-4e25-9496-530daf9e07ce)
 
 ## Como Ejecutarla
 
@@ -16,9 +15,9 @@ La aplicación es empaquetada como un jar con un Tomcat embebido. Por ende no es
 * Crear proyecto con ```mvn clean package```
 * Una vez construido el jar es posible correr la aplicación empleando alguno de los siguientes metodos:
 ```
-        java -jar cl.com.users-api-1.0.0.jar
+        java -jar users-api-1.0.0.jar
 or
-        mvn spring-boot:run"
+        mvn spring-boot:run
 ```
 Una vez ejecutada debería aparecer algo como esto en la consola:
 
@@ -32,5 +31,32 @@ Una vez ejecutada debería aparecer algo como esto en la consola:
 
 ## Acceso y Pruebas
 
-http://localhost:8080/
+### Enpoints 
+##### servicios
+```
+http://localhost:8080/api
+```
+##### Base de Datos H2
+```
+http://localhost:8080/h2-console
+```
 
+### Registro Nuevo Usuario
+![new-user-ok](https://github.com/bezkoder/spring-boot-spring-security-jwt-authentication/assets/5439093/0ef16f59-17ca-43b9-a50a-f60c69c05a45)
+
+### Intento acceso No Autorizado
+![unauthorized](https://github.com/bezkoder/spring-boot-spring-security-jwt-authentication/assets/5439093/ac2129dc-327e-4454-bef8-84699edb0f18)
+
+### Acceso Exitoso
+![login-ok-token](https://github.com/bezkoder/spring-boot-spring-security-jwt-authentication/assets/5439093/4c2a7634-7bd8-43f8-978d-89694d15e264)
+
+### Acceso a la Base de Datos H2 
+#### (Credenciales en archivo application.yml)
+
+![db-h2-1](https://github.com/bezkoder/spring-boot-spring-security-jwt-authentication/assets/5439093/083384c7-bd83-4f53-b753-d4e62aa6683a)
+
+#### Consulta de Usuarios creados
+![db-h2-2](https://github.com/bezkoder/spring-boot-spring-security-jwt-authentication/assets/5439093/77228cd8-a760-4f4b-924b-d08488e9bb8b)
+
+#### Consulta de telefonos guardados
+![db-h2-3](https://github.com/bezkoder/spring-boot-spring-security-jwt-authentication/assets/5439093/7361f33f-7add-417c-942f-41669456e949)
