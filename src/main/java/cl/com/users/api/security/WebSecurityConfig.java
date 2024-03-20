@@ -38,13 +38,12 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
   @Override
   public void configure(WebSecurity web) throws Exception {
-    web.ignoring().antMatchers("/configuration/**")
+    web.ignoring().antMatchers("/v2/api-docs")
+            .antMatchers("/swagger-resources/**")
+            .antMatchers("/swagger-ui.html")
+            .antMatchers("/configuration/**")
             .antMatchers("/webjars/**")
-            .antMatchers("/public")
-
-            .and()
-            .ignoring()
-            .antMatchers("/h2-console/**/**");;
+            .antMatchers("/public");;
   }
 
   @Bean

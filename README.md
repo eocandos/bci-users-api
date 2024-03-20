@@ -32,13 +32,17 @@ Una vez ejecutada debería aparecer algo como esto en la consola:
 ## Acceso y Pruebas
 
 ### Enpoints 
-##### servicios
+##### * Servicios *
 ```
 http://localhost:8080/api
 ```
-##### Base de Datos H2
+##### * Base de Datos H2 *
 ```
 http://localhost:8080/h2-console
+```
+##### * Swagger (Contrato autogenerado)* 
+```
+http://localhost:8080/swagger-ui.html#/
 ```
 
 ### Registro Nuevo Usuario
@@ -65,3 +69,6 @@ http://localhost:8080/h2-console
 ```
 ../resources/BCI USERS APP.postman_collection.json
 ```
+
+#### Vista Swagger
+![swagger-contrato](https://github.com/eocandos/bci-users-api/assets/5439093/39164598-8f0f-4187-9f57-40667edc36f1)
