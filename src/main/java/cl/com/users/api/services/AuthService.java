@@ -7,7 +7,6 @@ import javax.servlet.http.HttpServletRequest;
 public interface AuthService {
 
     String login(String email, String password);
-    // User find(String email);
 
     User checkToken(HttpServletRequest req);
 

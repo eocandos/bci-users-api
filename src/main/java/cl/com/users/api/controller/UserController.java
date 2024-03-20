@@ -40,7 +40,7 @@ public class UserController {
   @ApiOperation(value = "${UserController.find}", response = UserResponseDTO.class, authorizations = { @Authorization(value="apiKey") })
   @ApiResponses(value = {
           @ApiResponse(code = 400, message = ErrorMessages.ERROR_SOMETHING_WRONG),
-          @ApiResponse(code = 403, message = ErrorMessages.ERROR_ACCESS_DENIED),
+          @ApiResponse(code = 403, message = ErrorMessages.ERROR_UNAUTHORIZED),
           @ApiResponse(code = 404, message = ErrorMessages.ERROR_USER_DONT_EXIST),
           @ApiResponse(code = 500, message = ErrorMessages.ERROR_EXPIRED_OR_INVALID_JWT_TOKEN)})
   public ResponseEntity<List<User>> geUsers() {
@@ -51,7 +51,7 @@ public class UserController {
   @ApiOperation(value = "${UserController.register}")
   @ApiResponses(value = {
           @ApiResponse(code = 400, message = ErrorMessages.ERROR_SOMETHING_WRONG),
-          @ApiResponse(code = 403, message = ErrorMessages.ERROR_ACCESS_DENIED),
+          @ApiResponse(code = 403, message = ErrorMessages.ERROR_UNAUTHORIZED),
           @ApiResponse(code = 422, message = ErrorMessages.ERROR_EMAIL_ALREADY_EXIST)})
   public User register(@ApiParam("register User") @RequestBody UserDataDTO user) {
     return userService.register(modelMapper.map(user, User.class));

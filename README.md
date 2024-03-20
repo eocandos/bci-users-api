@@ -1,6 +1,9 @@
 # API Gestion de Usuarios
 
-API creada con Java / Maven / Spring Boot / JPA / H2
+## Tecnologías
+* Java 8
+* Spring Boot 2.5.4
+
 ## Diagrama de Secuencia
 ![diagrama-secuencia](https://github.com/bezkoder/spring-boot-spring-security-jwt-authentication/assets/5439093/1455d06e-80bb-4e25-9496-530daf9e07ce)
 
@@ -16,7 +19,7 @@ La aplicación es empaquetada como un jar con un Tomcat embebido. Por ende no es
 * Una vez construido el jar es posible correr la aplicación empleando alguno de los siguientes metodos:
 ```
         java -jar users-api-1.0.0.jar
-or
+o
         mvn spring-boot:run
 ```
 Una vez ejecutada debería aparecer algo como esto en la consola:
