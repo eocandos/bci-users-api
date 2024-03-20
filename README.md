@@ -60,3 +60,8 @@ http://localhost:8080/h2-console
 
 #### Consulta de telefonos guardados
 ![db-h2-3](https://github.com/bezkoder/spring-boot-spring-security-jwt-authentication/assets/5439093/7361f33f-7add-417c-942f-41669456e949)
+
+#### Colección postman para pruebas
+```
+../resources/BCI USERS APP.postman_collection.json
+```

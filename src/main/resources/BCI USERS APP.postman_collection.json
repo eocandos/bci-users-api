@@ -1,0 +1,100 @@
+{
+	"info": {
+		"_postman_id": "72f7d6ab-648d-43c0-9017-8ab866fc9729",
+		"name": "BCI USERS APP",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "342689"
+	},
+	"item": [
+		{
+			"name": "Ingreso",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/auth/login?email=user1@email.com&password=Geps123456789*",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"auth",
+						"login"
+					],
+					"query": [
+						{
+							"key": "email",
+							"value": "user1@email.com"
+						},
+						{
+							"key": "password",
+							"value": "Geps123456789*"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Ingreso Usuario No registrado",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/users/login?email=user1@email.com&password=1234",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"users",
+						"login"
+					],
+					"query": [
+						{
+							"key": "email",
+							"value": "user1@email.com"
+						},
+						{
+							"key": "password",
+							"value": "1234"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Nuevo Usuario",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n   \"email\":\"user1@email.com\",\r\n   \"password\":\"Geps123456789*\",\r\n   \"name\":\"Julia Robert\",\r\n   \"phones\": [{\r\n        \"number\": 1234567,\r\n        \"cityCode\": 57,\r\n        \"contryCode\": 1\r\n    },\r\n    {\r\n        \"number\": 987654321,\r\n        \"cityCode\": 53,\r\n        \"contryCode\": 7   \r\n    }\r\n   ],\r\n   \"appUserRoles\": [\"ROLE_USER\"]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/users",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"users"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
