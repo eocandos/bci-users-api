@@ -7,94 +7,145 @@
 	},
 	"item": [
 		{
-			"name": "Ingreso",
-			"request": {
-				"method": "POST",
-				"header": [],
-				"url": {
-					"raw": "http://localhost:8080/api/auth/login?email=user1@email.com&password=Geps123456789*",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8080",
-					"path": [
-						"api",
-						"auth",
-						"login"
-					],
-					"query": [
-						{
-							"key": "email",
-							"value": "user1@email.com"
+			"name": "REGISTER",
+			"item": [
+				{
+					"name": "Nuevo Usuario",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n   \"email\":\"user1@email.com\",\r\n   \"password\":\"Geps123456789*\",\r\n   \"name\":\"Julia Robert\",\r\n   \"phones\": [{\r\n        \"number\": 1234567,\r\n        \"cityCode\": 57,\r\n        \"contryCode\": 1\r\n    },\r\n    {\r\n        \"number\": 987654321,\r\n        \"cityCode\": 53,\r\n        \"contryCode\": 7   \r\n    }\r\n   ],\r\n   \"appUserRoles\": [\"ROLE_USER\"]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
 						},
-						{
-							"key": "password",
-							"value": "Geps123456789*"
+						"url": {
+							"raw": "http://localhost:8080/api/users",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"users"
+							]
 						}
-					]
+					},
+					"response": []
 				}
-			},
-			"response": []
+			]
 		},
 		{
-			"name": "Ingreso Usuario No registrado",
-			"request": {
-				"method": "POST",
-				"header": [],
-				"url": {
-					"raw": "http://localhost:8080/users/login?email=user1@email.com&password=1234",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8080",
-					"path": [
-						"users",
-						"login"
-					],
-					"query": [
-						{
-							"key": "email",
-							"value": "user1@email.com"
-						},
-						{
-							"key": "password",
-							"value": "1234"
+			"name": "LOGIN",
+			"item": [
+				{
+					"name": "Ingreso Usuario Registrado",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/auth/login?email=user1@email.com&password=Geps123456789*",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"auth",
+								"login"
+							],
+							"query": [
+								{
+									"key": "email",
+									"value": "user1@email.com"
+								},
+								{
+									"key": "password",
+									"value": "Geps123456789*"
+								}
+							]
 						}
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Nuevo Usuario",
-			"request": {
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n   \"email\":\"user1@email.com\",\r\n   \"password\":\"Geps123456789*\",\r\n   \"name\":\"Julia Robert\",\r\n   \"phones\": [{\r\n        \"number\": 1234567,\r\n        \"cityCode\": 57,\r\n        \"contryCode\": 1\r\n    },\r\n    {\r\n        \"number\": 987654321,\r\n        \"cityCode\": 53,\r\n        \"contryCode\": 7   \r\n    }\r\n   ],\r\n   \"appUserRoles\": [\"ROLE_USER\"]\r\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
+					},
+					"response": []
 				},
-				"url": {
-					"raw": "http://localhost:8080/api/users",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8080",
-					"path": [
-						"api",
-						"users"
-					]
+				{
+					"name": "Ingreso Usuario No registrado",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/users/login?email=user1@email.com&password=1234",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"users",
+								"login"
+							],
+							"query": [
+								{
+									"key": "email",
+									"value": "user1@email.com"
+								},
+								{
+									"key": "password",
+									"value": "1234"
+								}
+							]
+						}
+					},
+					"response": []
 				}
-			},
-			"response": []
+			]
+		},
+		{
+			"name": "CONSUNTAR",
+			"item": [
+				{
+					"name": "(USER) Get users",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1c2VyMUBlbWFpbC5jb20iLCJhdXRoIjpbeyJhdXRob3JpdHkiOiJST0xFX1VTRVIifV0sImlhdCI6MTcxMDk2MDg0MiwiZXhwIjoxNzEwOTYxNDQyfQ.o7wb8GK_Wc3juV3mn9a-D6qYK7cfPOmLjN9NYjZcl2c",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "apiKey",
+								"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbjEiLCJhdXRoIjpbeyJhdXRob3JpdHkiOiJST0xFX0FETUlOIn1dLCJpYXQiOjE3MTA5NjAxNjEsImV4cCI6MTcxMDk2MDQ2MX0.A61VvLDvKXIisYQjT095REImV_WQwqL87e2Oain8Pn0",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8080/api/users",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"users"
+							]
+						}
+					},
+					"response": []
+				}
+			]
 		}
 	]
 }

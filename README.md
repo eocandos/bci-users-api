@@ -83,6 +83,8 @@ http://localhost:8080/swagger-ui.html#/
 ```
 ../resources/BCI USERS APP.postman_collection.json
 ```
+![postman-requests](https://github.com/eocandos/bci-users-api/assets/5439093/ae329ded-37ef-493a-875b-7d42fd17f980)
+
 
 #### Vista Swagger
 ![swagger-contrato](https://github.com/eocandos/bci-users-api/assets/5439093/39164598-8f0f-4187-9f57-40667edc36f1)
