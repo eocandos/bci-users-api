@@ -16,7 +16,7 @@ import javax.persistence.*;
 @Entity
 @Data
 @NoArgsConstructor
-public class AppUser {
+public class User {
 
   @Id
   @GeneratedValue(generator = "UUID")
@@ -43,7 +43,7 @@ public class AppUser {
   private boolean isActive;
 
   @ElementCollection(fetch = FetchType.EAGER)
-  List<AppUserRole> appUserRoles;
+  List<UserRole> appUserRoles;
 
   @CreationTimestamp
   private Date created;

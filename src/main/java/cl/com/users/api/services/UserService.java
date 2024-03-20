@@ -1,13 +1,12 @@
 package cl.com.users.api.services;
 
-import cl.com.users.api.model.AppUser;
-
-import javax.servlet.http.HttpServletRequest;
+import cl.com.users.api.model.User;
+import java.util.List;
 
 public interface UserService {
 
-    String login(String email, String password);
-    AppUser find(String email);
-    AppUser register(AppUser user);
+    List<User> getAll();
+    User register(User user);
+
 
 }

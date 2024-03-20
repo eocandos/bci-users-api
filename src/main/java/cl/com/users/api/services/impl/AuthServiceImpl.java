@@ -3,46 +3,40 @@ package cl.com.users.api.services.impl;
 import cl.com.users.api.constants.ErrorMessages;
 import cl.com.users.api.exception.CustomException;
 import cl.com.users.api.repository.UserRepository;
+import cl.com.users.api.security.JwtTokenProvider;
+import cl.com.users.api.services.AuthService;
 import cl.com.users.api.services.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import cl.com.users.api.model.User;
-import cl.com.users.api.security.JwtTokenProvider;
-
-import java.util.List;
-
 @Service
 @RequiredArgsConstructor
-public class UserServiceImpl implements UserService {
+public class AuthServiceImpl implements AuthService {
 
   @Autowired
   private final UserRepository userRepository;
-
   private final PasswordEncoder passwordEncoder;
   private final JwtTokenProvider jwtTokenProvider;
   private final AuthenticationManager authenticationManager;
 
+  @Autowired
+  public UserService userService;
+
   @Override
-  public User register(User user) {
-    if (!userRepository.existsByEmail(user.getEmail())) {
-      user.setActive(true);
-      user.setPassword(passwordEncoder.encode(user.getPassword()));
-      user.setToken(jwtTokenProvider.createToken(user.getEmail(), user.getAppUserRoles()));
-      return userRepository.save(user);
-    } else {
-      throw new CustomException(ErrorMessages.ERROR_EMAIL_ALREADY_EXIST, HttpStatus.FORBIDDEN);
+  public String login(String email, String password) {
+    try {
+      authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(email, password));
+      String token = jwtTokenProvider.createToken(email, userRepository.findByEmail(email).getAppUserRoles());
+      return token;
+    } catch (AuthenticationException e) {
+      throw new CustomException(ErrorMessages.ERROR_UNAUTHORIZED, HttpStatus.UNAUTHORIZED);
     }
   }
-
-  @Override
-  public List<User> getAll() {
-    return userRepository.findAll();
-  }
-
 
 }

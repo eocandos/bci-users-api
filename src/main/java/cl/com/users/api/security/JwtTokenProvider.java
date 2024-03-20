@@ -10,8 +10,9 @@ import javax.annotation.PostConstruct;
 import javax.servlet.http.HttpServletRequest;
 
 import cl.com.users.api.exception.CustomException;
-import cl.com.users.api.model.AppUserRole;
+import cl.com.users.api.model.UserRole;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -26,6 +27,8 @@ import io.jsonwebtoken.SignatureAlgorithm;
 
 @Component
 public class JwtTokenProvider {
+
+  @Value("${security.jwt.token.secret-key:secret-key}")
   private String secretKey;
 
   private long validityInMilliseconds = 600000; // 10 min
@@ -38,7 +41,7 @@ public class JwtTokenProvider {
     secretKey = Base64.getEncoder().encodeToString(secretKey.getBytes());
   }
 
-  public String createToken(String email, List<AppUserRole> appUserRoles) {
+  public String createToken(String email, List<UserRole> appUserRoles) {
 
     Claims claims = Jwts.claims().setSubject(email);
     claims.put("auth", appUserRoles.stream().map(s -> new SimpleGrantedAuthority(s.getAuthority())).filter(Objects::nonNull).collect(Collectors.toList()));
