@@ -1,4 +1,4 @@
-package cl.com.users.api.repository;
+package cl.com.users.api.model;
 
 import org.springframework.security.core.GrantedAuthority;
 
