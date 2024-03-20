@@ -9,7 +9,7 @@
 * JWT
 
 ## Diagrama de Secuencia
-![diagrama-secuencia](https://github.com/bezkoder/spring-boot-spring-security-jwt-authentication/assets/5439093/1455d06e-80bb-4e25-9496-530daf9e07ce)
+![diagrama-secuencia](https://github.com/eocandos/bci-users-api/assets/5439093/831e4f9f-5229-4c1e-b1b5-ee8433a9167f)
 
 ## Como Ejecutarla
 
