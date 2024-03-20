@@ -3,6 +3,7 @@
 API creada con Java / Maven / Spring Boot
 
 ## Diagrama General
+![diagrama-secuencia-users-api](https://github.com/eocandos/bci-users-api/assets/5439093/817d1086-f343-4ccb-8afc-ae6bb1e4565a)
 
 ## Como Ejecutarla
 
