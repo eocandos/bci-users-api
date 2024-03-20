@@ -3,6 +3,10 @@
 ## Tecnologías
 * Java 8
 * Spring Boot 2.5.4
+* Maven 3x
+* JPA
+* H2
+* JWT
 
 ## Diagrama de Secuencia
 ![diagrama-secuencia](https://github.com/bezkoder/spring-boot-spring-security-jwt-authentication/assets/5439093/1455d06e-80bb-4e25-9496-530daf9e07ce)
